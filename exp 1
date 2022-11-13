@@ -1,0 +1,42 @@
+#gradient
+
+from sympy import diff, symbols
+x,y,z = symbols("x,y,z")
+
+def grad(f):
+    a = diff(f,x)
+    b = diff(f,y)
+    c = diff(f,z)
+    print("The gradient is",a,"i+",b,"j+",c,"k+")
+grad(2*(x**2)*(y**3)*z)
+
+#divergent
+
+from sympy import diff, symbols
+x,y,z = symbols("x,y,z")
+
+def div(f1,f2,f3):
+    a = diff(f1,x)
+    b = diff(f2,y)
+    c = diff(f3,z)
+    print(f"The divergant of {f1}i + {f2}j + {f3}k is = {a+b+c}")
+div(2*x**2*y,3*x,4*z*x)
+
+def curl(f1,f2,f3):
+    a = diff(f3,y) - diff(f2,z)
+    b = -diff(f3,x) + diff(f1,z)
+    c = diff(f2,x) - diff(f1,y)
+    print(f"Curl of ({f1})i + ({f2})j + ({f3})k is ({a})i + ({b})j + ({c})k")
+curl(y**2+z**3,2*x*y-5*z,3*x*z**2-5*y)
+
+#laplacian
+
+from sympy import diff, symbols
+x,y,z = symbols("x,y,z")
+
+def lap(f):
+    a = diff(f,x,2)
+    b = diff(f,y,2)
+    c = diff(f,z,2)
+    print(f"The lapalcaian of {f} is ({a+b+c})")
+lap(3*x**2 + 2*y**3)
