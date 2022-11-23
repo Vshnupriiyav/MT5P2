@@ -1,0 +1,56 @@
+##8
+
+from sympy import *
+from sympy.abc import i,z
+
+
+f= (z**3) + 1
+g= (z-4)**2
+s= solve(g)
+print("THe singular point is",s)
+
+n= 2
+c= 2
+r= 3
+
+w = abs(s[0]-c)
+
+if w<r:
+    print("the integral exists")
+    fd = diff(f,z,n-1)
+    fa = fd.subs({z,s[0]})
+    ans = (2*n*pi*fa)
+    print("The Cauchy's Integral formul, we have given integal is= ",ans)
+else:
+    print("THe caouchy integral do not exist")
+    
+    
+    ######################################4
+    
+    from sympy import *
+from sympy.abc import x,y,r,t,i
+u = log(r)
+v = t
+
+ur = simplify(diff(u,r))
+ut = simplify(diff(u,t))
+vr = simplify(diff(v,r))
+vt = simplify(diff(v,t))
+
+if ur == (1/r)*(vt) and vr == (-1/r)*(ut):
+    print("CR satisfies")
+else:
+    print("not satisfies CR")
+##########################
+
+from sympy import *
+x,y,r,t,i = symbols("x,y,r,i,t,")
+
+u = (r+1/r)*cos(t)
+ur = simplify(diff(u,r))
+ut = simplify(diff(u,t))
+f1 = ur.subs([(r,z),(t,0)])
+f2 = vr.subs([(r,z),(t,0)])
+
+f= integrate(f1,z)- i*integrate(f2*(1/z),z)+c
+print("f(z)=",f)
